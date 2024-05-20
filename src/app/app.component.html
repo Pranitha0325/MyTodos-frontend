@@ -1,0 +1,92 @@
+<!-- <div class="wrapper">
+  <app-header></app-header>
+  <sidebar></sidebar>
+  <div class="content-wrapper">
+    <router-outlet></router-outlet>
+  </div>
+  <app-footer></app-footer>
+  <div id="sidebar-overlay" (click)="toggleSidebar()"></div>
+</div> -->
+
+<div>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid" >
+      <a class="navbar-brand" style="margin-left: 20px;" href="#">Todo App</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="">My Todos</a>
+          </li>
+          
+        </ul>
+      </div> -->
+    </div>
+  </nav>
+</div>
+
+<div style="background-color:whitesmoke; color:darkslategrey; width:100vw; height:100vh">
+  <div class="container" >
+    <div >
+      <h1 style="color:brown">Add Todo</h1>
+      <form> 
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Create Task</label>
+          <input #todoInput type="text" class="form-control" id="exampleInputEmail1" placeholder="What need to be Done?" >
+        </div>
+        
+        <button (click)="onSubmit(todoInput.value)" type="submit" style="margin-bottom: 10px;" class="btn btn-primary">Add</button>
+      </form>
+    </div>
+      </div>
+      
+    
+      <div class="container" style="font-size: 24px;">
+        <h1 style="color:brown">My Tasks</h1>
+        <div class="row">
+          <table class="table" >
+            <thead>
+              <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Created Date</th>
+                <th scope="col">Is Completed?</th>
+                <th scope="col"></th>
+    <th></th>
+                <th scope="col"></th>
+    
+              </tr>
+            </thead>
+            <tbody *ngFor="let todo of todos">
+              <tr>
+                
+                <th scope="row"><input type="checkbox" (change)="toggleCompleted(todo)" [checked]="todo.isCompleted"/> {{ todo.title }}</th>
+                <td>{{ todo.createdDate}}</td>
+                 <td>
+                  <div style="display: flex; align-items: center;">
+                    <p style="margin-right: 10px; margin-bottom: 0px;">{{todo.isCompleted}}</p> 
+                  </div>
+                </td>
+                <td>
+                  <svg (click)="deleteTodo(todo.id.toString())" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                    <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0"/>
+                  </svg>
+                </td>
+                
+                <!-- <td style="color:blue"><button (click)="editTodo(todo)">Edit</button></td> -->
+                <!-- <td ><button style="background-color:red; color:white; border-style: none; border-radius: 5px;" (click)="deleteTodo(todo.id.toString())">Delete</button> </td> -->
+              </tr>
+             
+            </tbody>
+          </table>
+        </div>
+      </div> 
+     
+</div>
+
+  
+  
+  
+  
+  
